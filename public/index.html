@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="./js/bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="./js/bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style" onload="this.rel='stylesheet'"> 
+</head>
+<body>
+    <h1 class="title">照片浏览器</h1>
+    <div id="app">
+        <div class="container">
+            <div id="tabs">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="upload-tab" href="#" onclick="showTab('upload')">上传照片</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="query-tab" href="#" onclick="showTab('query')">查询照片</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content">
+                <div id="upload" class="tab-pane active">
+                    <form id="upload-form">
+                        <div class="form-group">
+                            <input type="file" name="photo" class="form-control" required onchange="previewImage(event)">
+                        </div>
+                        <div class="img-div">
+                            <img id="preview" class="preview-img" src="" alt="Image Preview" style="display: none;">
+                        </div>
+                        <div class="form-group">
+                            <input type="datetime-local" name="time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="location" placeholder="拍摄地点" class="form-control" required>
+                        </div>
+                        <div style="margin-top: 40px; text-align: center;">
+                            <button type="submit" class="btn btn-primary btn-lg" >上传</button>
+                        </div>
+                        
+                    </form>
+                </div>
+
+                <div id="query" class="tab-pane" style="display: none;">
+                    <div class="form-group">
+                        <input type="date" id="query-date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="query-location" placeholder="拍摄地点" class="form-control">
+                    </div>
+                    <div class="btn-groups">
+                       <button id="query-button-time" class="btn btn-secondary">按时间查询</button>
+                       <button id="query-button-location" class="btn btn-secondary">按地点查询</button>
+                       <button id="query-button-time-location" class="btn btn-secondary">按时间和地点查询</button>
+                       <button id="query-button-all" class="btn btn-secondary">查询所有照片</button>
+                    </div>
+                    
+                    <div id="photo-container">
+                        <!-- <img src="http://localhost:8080/uploads/img_1.png" alt=""> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>
